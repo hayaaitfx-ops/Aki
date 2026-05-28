@@ -1,0 +1,86 @@
+datasource db {
+  provider = "sqlite"
+}
+
+generator client {
+  provider   = "prisma-client-js"
+  engineType = "library"
+}
+
+model User {
+  id            String         @id @default(cuid())
+  name          String?
+  email         String?        @unique
+  emailVerified DateTime?
+  image         String?
+  password      String?        // Custom credentials support
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  accounts      Account[]
+  sessions      Session[]
+  conversations Conversation[]
+  settings      Settings?
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Conversation {
+  id        String    @id @default(cuid())
+  title     String
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  messages  Message[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Message {
+  id             String       @id @default(cuid())
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  role           String       // 'user' | 'assistant'
+  content        String
+  // JSON metadata string fields to map premium features
+  action         String?      // Custom tool command string
+  confirm        String?      // Custom confirmation action JSON
+  widget         String?      // Custom telemetry progress JSON
+  error          String?      // Locked database warning tracebacks
+  createdAt      DateTime     @default(now())
+}
+
+model Settings {
+  id             String  @id @default(cuid())
+  userId         String  @unique
+  user           User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  model          String  @default("brain") // 'brain' | 'nexus' | 'ollama'
+  temperature    Float   @default(0.7)
+  maxTokens      Int     @default(2048)
+  theme          String  @default("purple") // 'purple' | 'cyberpunk' | 'emerald'
+  language       String  @default("pt")
+  memoryEnabled  Boolean @default(true)
+  voiceEnabled   Boolean @default(true)
+}

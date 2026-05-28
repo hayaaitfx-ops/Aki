@@ -1,0 +1,326 @@
+@import "tailwindcss";
+
+:root {
+  --color-primary: #8b5cf6;
+  --color-primary-hover: #7c3aed;
+  --color-bg-main: #0a0a0a;
+  --color-bg-panel: #171717;
+  --color-bg-bubble-ai: #2e1065;
+  --color-bg-bubble-user: #262626;
+  --color-text-main: #f3f4f6;
+  --color-text-muted: #a3a3a3;
+  --color-border: #262626;
+}
+
+@theme {
+  --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+  --color-bg-main: var(--color-bg-main);
+  --color-bg-panel: var(--color-bg-panel);
+  --color-bg-bubble-ai: var(--color-bg-bubble-ai);
+  --color-bg-bubble-user: var(--color-bg-bubble-user);
+  --color-text-main: var(--color-text-main);
+  --color-text-muted: var(--color-text-muted);
+  --color-border: var(--color-border);
+}
+
+.theme-purple {
+  --color-primary: #8b5cf6;
+  --color-primary-hover: #7c3aed;
+  --color-bg-main: #0a0a0a;
+  --color-bg-panel: #171717;
+  --color-bg-bubble-ai: #2e1065;
+  --color-bg-bubble-user: #262626;
+  --color-border: #262626;
+}
+
+.theme-cyberpunk {
+  --color-primary: #d97706;
+  --color-primary-hover: #b45309;
+  --color-bg-main: #080707;
+  --color-bg-panel: #141211;
+  --color-bg-bubble-ai: #451a03;
+  --color-bg-bubble-user: #241f1c;
+  --color-border: #3b332f;
+}
+
+.theme-emerald {
+  --color-primary: #059669;
+  --color-primary-hover: #047857;
+  --color-bg-main: #020b08;
+  --color-bg-panel: #061912;
+  --color-bg-bubble-ai: #064e3b;
+  --color-bg-bubble-user: #0e271d;
+  --color-border: #133a2a;
+}
+
+.theme-crimson {
+  --color-primary: #ef4444;
+  --color-primary-hover: #dc2626;
+  --color-bg-main: #0c0202;
+  --color-bg-panel: #1a0808;
+  --color-bg-bubble-ai: #7f1d1d;
+  --color-bg-bubble-user: #2d1313;
+  --color-border: #451616;
+}
+
+.theme-nordic {
+  --color-primary: #38bdf8;
+  --color-primary-hover: #0284c7;
+  --color-bg-main: #020813;
+  --color-bg-panel: #061124;
+  --color-bg-bubble-ai: #0c4a6e;
+  --color-bg-bubble-user: #0b1f3c;
+  --color-border: #142d54;
+}
+
+.theme-sakura {
+  --color-primary: #ec4899;
+  --color-primary-hover: #db2777;
+  --color-bg-main: #0b0206;
+  --color-bg-panel: #190410;
+  --color-bg-bubble-ai: #86198f;
+  --color-bg-bubble-user: #2a1622;
+  --color-border: #4a1539;
+}
+
+.theme-synthwave {
+  --color-primary: #06b6d4;
+  --color-primary-hover: #0891b2;
+  --color-bg-main: #050212;
+  --color-bg-panel: #11092e;
+  --color-bg-bubble-ai: #4a044e;
+  --color-bg-bubble-user: #1a103c;
+  --color-border: #3b0764;
+}
+
+.theme-obsidian {
+  --color-primary: #eab308;
+  --color-primary-hover: #ca8a04;
+  --color-bg-main: #000000;
+  --color-bg-panel: #101010;
+  --color-bg-bubble-ai: #2d2006;
+  --color-bg-bubble-user: #1c1c1c;
+  --color-border: #2a2a2a;
+}
+
+.theme-forest {
+  --color-primary: #10b981;
+  --color-primary-hover: #059669;
+  --color-bg-main: #020d0a;
+  --color-bg-panel: #061912;
+  --color-bg-bubble-ai: #064e3b;
+  --color-bg-bubble-user: #0e271d;
+  --color-border: #133a2a;
+}
+
+body {
+  background-color: var(--color-bg-main);
+  color: var(--color-text-main);
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Futuristic Cyberpunk HUD Grid Pattern */
+.bg-hud-grid {
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+}
+
+/* CRT Scanlines Overlay */
+.scanlines-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.15) 50%
+  );
+  background-size: 100% 4px;
+  opacity: 0.22;
+  z-index: 5;
+}
+
+/* Glassmorphism custom tags */
+.glass-effect {
+  background: rgba(15, 15, 20, 0.55);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.radial-glow {
+  background: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.06) 0%, transparent 65%);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Futuristic Cinematic Sci-Fi Animations */
+@keyframes hologram-pulse {
+  0%, 100% {
+    opacity: 0.88;
+    filter: drop-shadow(0 0 12px var(--color-primary-glow, rgba(139, 92, 246, 0.4)));
+    transform: scale(1) translateY(0px);
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 28px var(--color-primary-glow, rgba(139, 92, 246, 0.75)));
+    transform: scale(1.03) translateY(-6px);
+  }
+}
+
+@keyframes slow-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes reverse-rotate {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes orbit-pulse {
+  0%, 100% {
+    transform: scale(0.96) rotate(0deg);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.04) rotate(180deg);
+    opacity: 0.75;
+  }
+}
+
+@keyframes ambient-glow {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0.15;
+  }
+  33% {
+    transform: translate(40px, -60px) scale(1.3);
+    opacity: 0.28;
+  }
+  66% {
+    transform: translate(-30px, 30px) scale(0.85);
+    opacity: 0.2;
+  }
+}
+
+@keyframes border-glow-sweep {
+  0%, 100% {
+    border-color: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 0 8px rgba(139, 92, 246, 0);
+  }
+  50% {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.18);
+  }
+}
+
+.animate-hologram {
+  animation: hologram-pulse 4s ease-in-out infinite;
+}
+
+.animate-slow-rotate {
+  animation: slow-rotate 28s linear infinite;
+}
+
+.animate-reverse-rotate {
+  animation: reverse-rotate 22s linear infinite;
+}
+
+.animate-orbit-pulse {
+  animation: orbit-pulse 14s ease-in-out infinite;
+}
+
+.animate-ambient-1 {
+  animation: ambient-glow 18s ease-in-out infinite;
+}
+
+.animate-ambient-2 {
+  animation: ambient-glow 24s ease-in-out infinite alternate;
+}
+
+.animate-border-glow {
+  animation: border-glow-sweep 3s ease-in-out infinite;
+}
+
+@keyframes scan-line {
+  0% { transform: translateY(-10vh); }
+  100% { transform: translateY(110vh); }
+}
+
+@keyframes scan-fade {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 0.8; }
+}
+
+/* Hide scrollbars for premium horizontal touch sliders */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Hologram Cockpit Overlay & CRT projection wobble styles */
+.holo-effect-active {
+  animation: holo-flicker 0.25s infinite;
+}
+
+@keyframes holo-flicker {
+  0%, 100% { 
+    filter: brightness(1.03) contrast(1.02) saturate(1.05); 
+  }
+  50% { 
+    filter: brightness(0.98) contrast(0.98) saturate(0.97); 
+  }
+}
+
+.bg-holo-scanlines {
+  background: linear-gradient(
+    rgba(6, 182, 212, 0) 50%, 
+    rgba(6, 182, 212, 0.08) 50%
+  );
+  background-size: 100% 6px;
+}
+
+.bg-holo-glare {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.03) 0%, transparent 70%);
+}
+
+@keyframes holo-scan {
+  0% { top: -10px; }
+  100% { top: 105%; }
+}
+
+.animate-holo-scan {
+  animation: holo-scan 8s linear infinite;
+}
+
+@keyframes holo-glare-pulse {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.35; }
+}
+
+.animate-holo-glare {
+  animation: holo-glare-pulse 4s ease-in-out infinite;
+}
+
